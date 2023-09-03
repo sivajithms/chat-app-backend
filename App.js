@@ -29,13 +29,13 @@ const io = new Server(server, {
     origin: "http://localhost:3000",
     methods: ["GET", "POST"],
   },
-});
+}); 
 
 io.on("connection", (socket) => {
   console.log("connected to socket.io", socket.id);
   socket.on("send_message", (data) => {
     console.log(data);
-    socket.emit("receive_message", data);
+    io.emit("receive_message", data);
   });
 });
 
